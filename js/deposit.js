@@ -9,8 +9,15 @@ document.getElementById("btn-deposit").addEventListener("click", function () {
   // console.log(newDepositAmount);
   /* 
     1. get previous deposit total by id
-
     */
+  if (isNaN(newDepositAmount)) {
+    alert('Please Enter a Number');
+    return;
+  }
+  else if (newDepositAmount < 0) {
+    alert('Please Enter a Positive Number');
+    return;
+  }
   const previousDepositTotal = getTextElementValueById("deposit-total");
   // console.log(previousDepositTotal);
 

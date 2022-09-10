@@ -13,6 +13,15 @@ document.getElementById("btn-withdraw").addEventListener("click", function () {
   const newWithdrawAmount = getInputFieldValueById("withdraw-field");
   // console.log(newWithdrawAmount);
 
+  if (isNaN(newWithdrawAmount)) {
+    alert('Please Enter a Number');
+    return;
+  }
+  else if (newWithdrawAmount < 0) {
+    alert('Please Enter a Positive Number');
+    return;
+  }
+
   const previousWithdrawTotal = getTextElementValueById("withdraw-total");
   // console.log(previousWithdrawTotal);
 
@@ -21,5 +30,9 @@ document.getElementById("btn-withdraw").addEventListener("click", function () {
   setTextElementValueById("withdraw-total", newWithdrawTotal);
   const previousBalanceTotal = getTextElementValueById("balance-total");
   const newBalanceTotal = previousBalanceTotal - newWithdrawAmount;
+  if (newWithdrawAmount > newBalanceTotal) {
+    alert("You don't have Sufficient Money");
+    return;
+  }
   setTextElementValueById("balance-total", newBalanceTotal);
 });
